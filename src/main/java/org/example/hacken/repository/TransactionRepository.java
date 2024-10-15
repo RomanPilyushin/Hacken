@@ -1,5 +1,6 @@
-package org.example.hacken;
+package org.example.hacken.repository;
 
+import org.example.hacken.model.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

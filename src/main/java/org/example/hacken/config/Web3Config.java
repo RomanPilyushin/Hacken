@@ -1,4 +1,4 @@
-package org.example.hacken;
+package org.example.hacken.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

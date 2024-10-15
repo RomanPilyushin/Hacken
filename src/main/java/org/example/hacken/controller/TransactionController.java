@@ -1,8 +1,10 @@
-package org.example.hacken;
+package org.example.hacken.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import org.example.hacken.model.TransactionEntity;
+import org.example.hacken.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

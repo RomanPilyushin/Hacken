@@ -1,8 +1,12 @@
-package org.example.hacken;
+package org.example.hacken.service;
 
 import io.reactivex.disposables.Disposable;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.example.hacken.model.ProcessedBlock;
+import org.example.hacken.model.TransactionEntity;
+import org.example.hacken.repository.TransactionRepository;
+import org.example.hacken.repository.ProcessedBlockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web3j.protocol.Web3j;

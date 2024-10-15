@@ -1,4 +1,4 @@
-package org.example.hacken;
+package org.example.hacken.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
