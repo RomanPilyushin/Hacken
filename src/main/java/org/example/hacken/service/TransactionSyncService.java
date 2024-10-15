@@ -16,10 +16,7 @@ import org.web3j.protocol.core.DefaultBlockParameterNumber;
 import org.web3j.protocol.core.methods.response.*;
 
 import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 // Mark this class as a service, making it a Spring component
@@ -47,29 +44,23 @@ public class TransactionSyncService {
     // This method is executed after the service is initialized (post-construction)
     @PostConstruct
     public void start() {
-        // Load the last processed block from the database
-        lastProcessedBlock = loadLastProcessedBlock();
+        lastProcessedBlock = loadLastProcessedBlock();  // Load last processed block from the DB
 
-        // Subscribe to replay past and future blocks starting from the last processed block
         subscription = web3j.replayPastAndFutureBlocksFlowable(
                         new DefaultBlockParameterNumber(lastProcessedBlock), true)
                 .subscribe(block -> {
                     try {
-                        // Process each new block
-                        processBlock(block);
-                        // Update the last processed block number
-                        lastProcessedBlock = block.getBlock().getNumber();
-                        // Save the last processed block number to the database
-                        saveLastProcessedBlock(lastProcessedBlock);
+                        processBlock(block);  // Process each new block
+                        lastProcessedBlock = block.getBlock().getNumber();  // Update last processed block number
+                        saveLastProcessedBlock(lastProcessedBlock);  // Save to DB after processing each block
                     } catch (Exception e) {
-                        // Log any errors during block processing and continue
                         System.err.println("Error processing block: " + e.getMessage());
                     }
                 }, error -> {
-                    // Log subscription errors, ensuring the process continues
                     System.err.println("Error in block subscription: " + error.getMessage());
                 });
     }
+
 
     // Process a single Ethereum block
     private void processBlock(EthBlock block) {
@@ -109,32 +100,32 @@ public class TransactionSyncService {
 
     // Save the new transactions into the database with exception handling for constraint violations
     public void saveNewTransactions(List<TransactionEntity> newEntities) {
-        for (TransactionEntity entity : newEntities) {
+        int batchSize = 100;  // You can adjust the batch size based on the database performance
+        List<List<TransactionEntity>> batches = partitionList(newEntities, batchSize);
+
+        for (List<TransactionEntity> batch : batches) {
             try {
-                // Attempt to save the entity in the database
-                transactionRepository.save(entity);
-                System.out.println("Transaction saved: " + entity.getTransactionHash());
-            } catch (DataIntegrityViolationException e) {
-                // Handle primary key (duplicate transaction hash) violations
-                if (e.getCause() instanceof ConstraintViolationException) {
-                    ConstraintViolationException constraintViolation = (ConstraintViolationException) e.getCause();
-                    if (constraintViolation.getConstraintName().equals("PUBLIC.PRIMARY_KEY_F")) {
-                        // Log the duplicate transaction hash and skip it
-                        System.err.println("Duplicate transaction hash found: " + entity.getTransactionHash());
-                    } else {
-                        // Log any other constraint violations
-                        System.err.println("Other constraint violation: " + constraintViolation.getConstraintName());
-                    }
-                } else {
-                    // Log any other data integrity issues
-                    System.err.println("Data integrity issue: " + e.getMessage());
-                }
+                transactionRepository.saveAll(batch);  // Save the batch of transactions
+                // Print each transaction's details after it's saved
+                batch.forEach(entity -> {
+                    System.out.println("Transaction saved: From Address: " + entity.getFromAddress() +
+                            " To Address: " + entity.getToAddress());
+                });
             } catch (Exception e) {
-                // Catch all other exceptions to ensure that the process continues
-                System.err.println("Unexpected error while saving transaction: " + e.getMessage());
+                System.err.println("Error saving batch: " + e.getMessage());
             }
         }
     }
+
+    // Helper method to partition the list into smaller batches
+    private <T> List<List<T>> partitionList(List<T> list, int size) {
+        List<List<T>> partitions = new ArrayList<>();
+        for (int i = 0; i < list.size(); i += size) {
+            partitions.add(list.subList(i, Math.min(i + size, list.size())));
+        }
+        return partitions;
+    }
+
 
     // Convert a Transaction object to a TransactionEntity for database storage
     private TransactionEntity mapTransaction(Transaction tx) {
@@ -149,11 +140,15 @@ public class TransactionSyncService {
     // This method is executed before the service is destroyed (pre-destruction)
     @PreDestroy
     public void stop() {
-        // Dispose of the blockchain subscription to stop receiving updates
         if (subscription != null && !subscription.isDisposed()) {
             subscription.dispose();
         }
+        // Ensure the last processed block is saved before the service shuts down
+        if (lastProcessedBlock != null) {
+            saveLastProcessedBlock(lastProcessedBlock);
+        }
     }
+
 
     // Load the last processed block number from the database
     private BigInteger loadLastProcessedBlock() {
