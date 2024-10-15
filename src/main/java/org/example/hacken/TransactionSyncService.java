@@ -3,7 +3,9 @@ package org.example.hacken;
 import io.reactivex.disposables.Disposable;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterNumber;
@@ -38,12 +40,17 @@ public class TransactionSyncService {
         subscription = web3j.replayPastAndFutureBlocksFlowable(
                         new DefaultBlockParameterNumber(lastProcessedBlock), true)
                 .subscribe(block -> {
-                    processBlock(block);
-                    // Update last processed block number
-                    lastProcessedBlock = block.getBlock().getNumber();
-                    saveLastProcessedBlock(lastProcessedBlock);
+                    try {
+                        processBlock(block);
+                        // Update last processed block number
+                        lastProcessedBlock = block.getBlock().getNumber();
+                        saveLastProcessedBlock(lastProcessedBlock);
+                    } catch (Exception e) {
+                        // Log and continue processing other blocks
+                        System.err.println("Error processing block: " + e.getMessage());
+                    }
                 }, error -> {
-                    // Handle errors
+                    // Log subscription errors and continue processing other blocks
                     System.err.println("Error in block subscription: " + error.getMessage());
                 });
     }
@@ -62,24 +69,52 @@ public class TransactionSyncService {
                 .map(Transaction::getHash)
                 .collect(Collectors.toList());
 
-        // Fetch existing transaction hashes from the database
-        List<String> existingTxHashes = transactionRepository.findExistingTransactionHashes(txHashes);
-        Set<String> existingTxHashSet = new HashSet<>(existingTxHashes);
+        try {
+            // Fetch existing transaction hashes from the database
+            List<String> existingTxHashes = transactionRepository.findExistingTransactionHashes(txHashes);
+            Set<String> existingTxHashSet = new HashSet<>(existingTxHashes);
 
-        // Filter out transactions that already exist
-        List<TransactionEntity> newEntities = transactions.stream()
-                .filter(tx -> !existingTxHashSet.contains(tx.getHash()))
-                .map(this::mapTransaction)
-                .collect(Collectors.toList());
+            // Filter out transactions that already exist
+            List<TransactionEntity> newEntities = transactions.stream()
+                    .filter(tx -> !existingTxHashSet.contains(tx.getHash()))
+                    .map(this::mapTransaction)
+                    .collect(Collectors.toList());
 
-        // Add logging to debug duplicates
-        if (!newEntities.isEmpty()) {
-            newEntities.forEach(entity -> System.out.println("New entity: " + entity.getTransactionHash()));
-            transactionRepository.saveAll(newEntities);
-        } else {
-            System.out.println("No new entities to save.");
+            // Save only new transactions with exception handling
+            saveNewTransactions(newEntities);
+        } catch (Exception e) {
+            // Log and continue with the next block
+            System.err.println("Error processing transactions in block " + block.getBlock().getNumber() + ": " + e.getMessage());
         }
     }
+
+    public void saveNewTransactions(List<TransactionEntity> newEntities) {
+        for (TransactionEntity entity : newEntities) {
+            try {
+                transactionRepository.save(entity);
+                System.out.println("Transaction saved: " + entity.getTransactionHash());
+            } catch (DataIntegrityViolationException e) {
+                // Handle primary key violations specifically
+                if (e.getCause() instanceof ConstraintViolationException) {
+                    ConstraintViolationException constraintViolation = (ConstraintViolationException) e.getCause();
+                    if (constraintViolation.getConstraintName().equals("PUBLIC.PRIMARY_KEY_F")) {
+                        // Log the duplicate and skip it
+                        System.err.println("Duplicate transaction hash found: " + entity.getTransactionHash());
+                    } else {
+                        System.err.println("Other constraint violation: " + constraintViolation.getConstraintName());
+                    }
+                } else {
+                    System.err.println("Data integrity issue: " + e.getMessage());
+                }
+            } catch (Exception e) {
+                // Catch all other exceptions to ensure the process continues
+                System.err.println("Unexpected error while saving transaction: " + e.getMessage());
+            }
+        }
+    }
+
+
+
 
 
 
