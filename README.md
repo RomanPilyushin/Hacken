@@ -72,6 +72,99 @@ The application provides a **REST API** that allows users to query and retrieve 
 
 This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a local database (H2).
 
+### Requirements Breakdown and Current Implementation:
+
+#### 1. **Service to Connect to EVM Node and Get Real-Time Transactions**
+
+- **Requirement**: Connect to an EVM-compatible node (like Ethereum, Arbitrum, BSC, Optimism, etc.) using a service such as Infura to retrieve real-time transactions.
+    - **Current Implementation**:
+        - The application connects to **Infura** (an Ethereum-compatible node) using **Web3j** to retrieve Ethereum transactions in real time.
+        - It processes the transactions and stores them in the H2 database.
+- **Fulfillment**: ✅ This requirement is fully implemented.
+
+#### 2. **Start, Stop, Resume Without Losing Transactions**
+
+- **Requirement**: The service should be able to stop, wait for some time, start again, and resume importing transactions without losing any range of transactions.
+    - **Current Implementation**:
+        - The last processed block number is saved to the database, and when the service restarts, it resumes fetching blocks starting from the last saved block.
+        - A `@PreDestroy` method ensures the service gracefully stops, saves the last processed block, and then resumes on restart.
+- **Fulfillment**: ✅ This feature is implemented, ensuring no transactions are lost when the service is restarted.
+
+#### 3. **Efficient Storage and Processing of Large Data Volumes**
+
+- **Requirement**: Efficiently handle large transaction volumes, e.g., ~1 million transactions per day, scaling up to millions of records in the database (30 million per month, 360 million per year).
+    - **Current Implementation**:
+        - The service uses **batch processing** for saving transactions to reduce database write load.
+        - The current database is **H2**, which is fine for development but not scalable for production. You would need to configure the service to use **PostgreSQL** or **MySQL** for long-term scalability.
+        - **Indexes** and potential **partitioning** on large databases will need to be configured when moving to production-grade databases to maintain performance.
+- **Fulfillment**: ✅ (for development with H2). For production, a switch to a robust database like PostgreSQL or MySQL would be needed.
+
+#### 4. **Store Transaction Data to Database**
+
+- **Requirement**: Store real-time transaction data in the database.
+    - **Current Implementation**: Transactions are stored in the H2 database with details such as `fromAddress`, `toAddress`, `value`, and `transactionHash`.
+- **Fulfillment**: ✅ This is fully implemented.
+
+#### 5. **REST Service with Search Functionality**
+
+- **Requirement**: Implement a REST service that allows searching for stored transaction data.
+    - **Current Implementation**:
+        - The application provides REST endpoints to:
+            - Search transactions by `fromAddress`.
+            - Search transactions by `toAddress`.
+            - Search transactions by both `fromAddress` and `toAddress`.
+        - There’s also an endpoint to fetch a transaction by its hash.
+- **Fulfillment**: ✅ This functionality is fully implemented.
+
+#### 6. **Optional: Full-Text Search**
+
+- **Requirement**: Add full-text search support as an optional feature.
+    - **Current Implementation**: Full-text search is not implemented.
+- **Fulfillment**: ❌ Not implemented. You can consider adding a full-text search library (e.g., Hibernate Search with Elasticsearch) if needed.
+
+#### 7. **Optional: API Documentation**
+
+- **Requirement**: API documentation is optional but suggested.
+    - **Current Implementation**: The project uses **Swagger** to document the API endpoints. Swagger UI is available at `/swagger-ui/index.html`.
+- **Fulfillment**: ✅ Swagger documentation is implemented.
+
+#### 8. **Optional: Health Check**
+
+- **Requirement**: Implement a health check endpoint for the service.
+    - **Current Implementation**: The Spring Boot **actuator** is used, and the `/actuator/health` endpoint provides a health check.
+- **Fulfillment**: ✅ Health check is implemented.
+
+#### 9. **Optional: Metrics**
+
+- **Requirement**: Provide metrics for monitoring the service's performance.
+    - **Current Implementation**: The `/actuator/metrics` endpoint provides various metrics related to the application, such as memory usage, transaction rates, etc.
+- **Fulfillment**: ✅ Metrics are implemented via Spring Boot Actuator.
+
+---
+
+### Summary of Fulfillment:
+
+- **Service Connection**: ✅ The service connects to Infura (an Ethereum node) and processes real-time transactions.
+- **Start, Stop, Resume**: ✅ The service can stop and resume without losing transaction data.
+- **Efficient Data Storage**: ✅ Efficient batch processing for storing transactions is implemented. For production, database configuration changes (PostgreSQL, MySQL) would be needed.
+- **REST Service**: ✅ The REST service provides endpoints for searching stored transactions.
+- **Optional Features**:
+    - **API Documentation**: ✅ Implemented with Swagger.
+    - **Health Check**: ✅ Implemented with Spring Boot Actuator.
+    - **Metrics**: ✅ Implemented with Spring Boot Actuator.
+    - **Full-Text Search**: ❌ Not implemented (optional).
+
+### What’s Missing or Needs Enhancement:
+
+1. **Full-Text Search** (Optional): If needed, you can add this using Elasticsearch or a similar solution.
+2. **Database Scalability for Production**: Switch from H2 to a production database like PostgreSQL or MySQL to handle millions of transactions efficiently.
+
+The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**. For long-term scalability, switching to a more robust database and optimizing the database structure would be recommended for production-level usage.
+
+
+
+
+
 ## Requirements
 
 - Java 17 or higher
