@@ -1,0 +1,285 @@
+2024-10-15 17:15:13.504638+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:16:57.028231+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:16:57.034230+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:16:57.035230+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:16:57.035230+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:27:29.987181+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:27:29.991181+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:27:29.993180+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:27:29.993180+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:27:47.265718+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transactions te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transactions te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 17:36:59.741432+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:36:59.749434+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:36:59.750434+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:36:59.750434+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:37:02.152438+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transactions te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transactions te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 17:43:18.933349+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:43:18.940350+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:43:18.941350+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:43:18.942349+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:43:36.615349+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transactions te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transactions te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 17:44:45.677385+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:44:45.688386+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:44:45.690388+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:44:45.691388+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:45:14.769729+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:45:14.774728+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:45:14.776731+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:45:14.777731+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:45:55.754730+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:45:55.760730+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), [*]value varchar(255) not null, primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transactions (transaction_hash varchar(255) not null, from_address varchar(255) not null, to_address varchar(255), value varchar(255) not null, primary key (transaction_hash)) [42001-224]
+2024-10-15 17:45:55.765730+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_from_address on transactions (from_address) [42102-224]
+2024-10-15 17:45:55.765730+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TRANSACTIONS" not found; SQL statement:
+create index idx_to_address on transactions (to_address) [42102-224]
+2024-10-15 17:46:13.580760+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transactions te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transactions te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 17:48:59.595713+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:51:01.128722+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:51:47.605714+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:52:11.190745+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:53:53.319681+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:54:31.742375+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:55:36.841492+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 17:57:38.471877+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 18:28:05.122725+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 18:31:48.982027+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 18:33:25.006329+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 18:36:13.092843+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 19:02:04.061307+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table transaction_entity (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), [*]value varchar(255), primary key (transaction_hash))"; expected "identifier"; SQL statement:
+create table transaction_entity (transaction_hash varchar(255) not null, from_address varchar(255), to_address varchar(255), value varchar(255), primary key (transaction_hash)) [42001-224]
+2024-10-15 19:02:06.349306+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transaction_entity te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transaction_entity te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 19:02:06.468311+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transaction_entity te1_0 where te1_0.transaction_hash=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transaction_entity te1_0 where te1_0.transaction_hash=? [42001-224]
+2024-10-15 19:02:23.789307+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.[*]value from transaction_entity te1_0 where te1_0.from_address=?"; expected "identifier"; SQL statement:
+select te1_0.transaction_hash,te1_0.from_address,te1_0.to_address,te1_0.value from transaction_entity te1_0 where te1_0.from_address=? [42001-224]
+2024-10-15 16:12:12 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:790)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:153)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 32 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 26 more
+2024-10-15 16:12:39 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:790)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:153)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 32 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 26 more
+2024-10-15 16:12:43 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:790)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:153)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 32 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/rpily/IdeaProjects/Hacken/Hacken/data/transactions.mv.db [2.2.220/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 26 more
+2024-10-15 19:13:06.038148+03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]TRANSACTION_HASH"; expected "TRUNCATE"; SQL statement:
+TRANSACTION_HASH [42001-224]
