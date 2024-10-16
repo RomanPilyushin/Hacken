@@ -23,6 +23,12 @@ services:
       - INFURA_PROJECT_ID=da2609b425424451a0a6b43bdc5243e8
     ports:
       - "8080:8080"
+    links:
+      - postgres
+
+
 
 volumes:
   pgdata:
+
+
