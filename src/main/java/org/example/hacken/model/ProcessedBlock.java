@@ -32,5 +32,4 @@ public class ProcessedBlock {
     public BigInteger getBlockNumber() {
         return blockNumber;
     }
-
 }

@@ -1,0 +1,28 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=hacken_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=your_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  hacken-app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/hacken_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=your_password
+      - INFURA_PROJECT_ID=da2609b425424451a0a6b43bdc5243e8
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

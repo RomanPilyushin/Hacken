@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "transactions", indexes = {
+        @Index(name = "idx_transaction_hash", columnList = "transaction_hash"),
         @Index(name = "idx_from_address", columnList = "from_address"),
         @Index(name = "idx_to_address", columnList = "to_address")
 })
@@ -26,4 +27,3 @@ public class TransactionEntity {
     @Column(name = "tx_value", nullable = false)
     private String value;
 }
-
