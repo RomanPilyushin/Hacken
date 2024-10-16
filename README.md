@@ -70,7 +70,7 @@ The application provides a **REST API** that allows users to query and retrieve 
 
     - If a transaction is requested that isn't yet in the Postgres database (e.g., by transaction hash), the application will fetch it from Infura, save it to the database, and return the transaction data.
 
-This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a local database (Postgres).
+This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a Postgres database.
 
 ### Requirements Breakdown and Current Implementation:
 
@@ -95,9 +95,8 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 - **Requirement**: Efficiently handle large transaction volumes, e.g., ~1 million transactions per day, scaling up to millions of records in the database (30 million per month, 360 million per year).
     - **Current Implementation**:
         - The service uses **batch processing** for saving transactions to reduce database write load.
-        - The current database is **Postgres**, which is fine for development but not scalable for production. You would need to configure the service to use **PostgreSQL** or **MySQL** for long-term scalability.
-        - **Indexes** and potential **partitioning** on large databases will need to be configured when moving to production-grade databases to maintain performance.
-- **Fulfillment**: ✅ (for development with Postgres). For production, a switch to a robust database like PostgreSQL or MySQL would be needed.
+        - The current database is **Postgres**, which is fine for production development.
+- **Fulfillment**: ✅ This is fully implemented.
 
 #### 4. **Store Transaction Data to Database**
 
@@ -146,7 +145,7 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 
 - **Service Connection**: ✅ The service connects to Infura (an Ethereum node) and processes real-time transactions.
 - **Start, Stop, Resume**: ✅ The service can stop and resume without losing transaction data.
-- **Efficient Data Storage**: ✅ Efficient batch processing for storing transactions is implemented. For production, database configuration changes (PostgreSQL, MySQL) would be needed.
+- **Efficient Data Storage**: ✅ Efficient batch processing for storing transactions is implemented.
 - **REST Service**: ✅ The REST service provides endpoints for searching stored transactions.
 - **Optional Features**:
     - **API Documentation**: ✅ Implemented with Swagger.
@@ -156,8 +155,7 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 
 ### What’s Missing or Needs Enhancement:
 
-1. **Full-Text Search** (Optional): If needed, you can add this using Elasticsearch or a similar solution.
-2. **Database Scalability for Production**: Switch from Postgres to a production database like PostgreSQL or MySQL to handle millions of transactions efficiently.
+**Full-Text Search** (Optional): If needed, you can add this using Elasticsearch or a similar solution.
 
 The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**. For long-term scalability, switching to a more robust database and optimizing the database structure would be recommended for production-level usage.
 
