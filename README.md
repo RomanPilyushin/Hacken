@@ -155,9 +155,9 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 
 ### What’s Missing or Needs Enhancement:
 
-**Full-Text Search** (Optional): If needed, you can add this using Elasticsearch or a similar solution.
+**Full-Text Search** (Optional): If needed, using Elasticsearch.
 
-The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**. For long-term scalability, switching to a more robust database and optimizing the database structure would be recommended for production-level usage.
+The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**.
 
 
 
@@ -169,6 +169,8 @@ The current implementation covers **all key requirements** with additional featu
 - Maven
 - Spring Boot
 - Web3j
+- Docker
+- Docker Compose
 
 ## Getting Started
 
