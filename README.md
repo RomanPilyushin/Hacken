@@ -1,7 +1,7 @@
 
 # Hacken Application
 
-This Spring Boot application is designed to manage and process Ethereum (ETH) transactions by interacting with the Ethereum blockchain through a Web3 provider (Infura) and storing transaction data in an H2 in-memory database. Below is an explanation of how the program works:
+This Spring Boot application is designed to manage and process Ethereum (ETH) transactions by interacting with the Ethereum blockchain through a Web3 provider (Infura) and storing transaction data in Postgres database. Below is an explanation of how the program works:
 
 ### 1. **Fetching Ethereum Transactions from Infura**
 
@@ -22,11 +22,11 @@ For each block:
     - The **to address** (the recipient's Ethereum address).
     - The **transaction value** (the amount of ETH transferred).
 
-### 2. **Storing Ethereum Transactions in the H2 Database**
+### 2. **Storing Ethereum Transactions in the Postgres Database**
 
-Once transactions are fetched from Infura, the application stores them in an **H2 database**:
+Once transactions are fetched from Infura, the application stores them in an **Postgres database**:
 
-- **H2** is a lightweight, in-memory database commonly used in development or small-scale applications.
+- **Postgres** is a lightweight, in-memory database commonly used in development or small-scale applications.
 - Each transaction is mapped to a **`TransactionEntity`** (a Java object) and saved into the database using the `TransactionRepository`.
 
 Steps:
@@ -35,12 +35,12 @@ Steps:
 - If the transaction is **new**, it is inserted into the database.
 - The transaction data is stored with details such as the **from address**, **to address**, and **transaction value**.
 
-### 3. **Retrieving Data from the H2 Database**
+### 3. **Retrieving Data from the Postgres Database**
 
-The application provides a **REST API** that allows users to query and retrieve transaction data from the H2 database:
+The application provides a **REST API** that allows users to query and retrieve transaction data from the Postgres database:
 
 - **Get Transaction by Hash**: You can fetch a specific transaction from the database by providing its transaction hash.
-    - If the transaction is not already in the database, it will be fetched from Infura (via Web3j), saved in the H2 database, and returned.
+    - If the transaction is not already in the database, it will be fetched from Infura (via Web3j), saved in the Postgres database, and returned.
 - **Get Transactions by Address**:
     - You can retrieve transactions **from a specific address** (i.e., the sender's address).
     - You can retrieve transactions **to a specific address** (i.e., the recipient's address).
@@ -49,8 +49,8 @@ The application provides a **REST API** that allows users to query and retrieve 
 ### Summary of How the Application Works:
 
 1. **Connection to Ethereum Blockchain**: The application connects to Infura via Web3j to fetch Ethereum blocks and transactions.
-2. **Transaction Processing**: For each block, the transactions are extracted, and new transactions are saved to the H2 database.
-3. **Transaction Storage**: Transactions are stored in the H2 database, where details such as the hash, sender, recipient, and value are saved.
+2. **Transaction Processing**: For each block, the transactions are extracted, and new transactions are saved to the Postgres database.
+3. **Transaction Storage**: Transactions are stored in the Postgres database, where details such as the hash, sender, recipient, and value are saved.
 4. **Data Retrieval**: Users can query the application’s REST API to retrieve stored transactions based on various criteria (by hash, from address, to address).
 
 ### Example Use Case:
@@ -61,16 +61,16 @@ The application provides a **REST API** that allows users to query and retrieve 
 2. **Fetching Transactions**:
 
     - A new block is mined, and the application receives the block's data, including its transactions.
-    - Each transaction is processed and saved to the H2 database, if it’s not already present.
+    - Each transaction is processed and saved to the Postgres database, if it’s not already present.
 3. **Querying Transactions**:
 
     - A user makes a request to the API, such as `/api/transactions/from/0x123456...` to retrieve all transactions sent from a specific Ethereum address.
-    - The application queries the H2 database and returns the stored transactions matching the request.
+    - The application queries the Postgres database and returns the stored transactions matching the request.
 4. **Ensuring Consistency**:
 
-    - If a transaction is requested that isn't yet in the H2 database (e.g., by transaction hash), the application will fetch it from Infura, save it to the database, and return the transaction data.
+    - If a transaction is requested that isn't yet in the Postgres database (e.g., by transaction hash), the application will fetch it from Infura, save it to the database, and return the transaction data.
 
-This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a local database (H2).
+This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a local database (Postgres).
 
 ### Requirements Breakdown and Current Implementation:
 
@@ -79,7 +79,7 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 - **Requirement**: Connect to an EVM-compatible node (like Ethereum, Arbitrum, BSC, Optimism, etc.) using a service such as Infura to retrieve real-time transactions.
     - **Current Implementation**:
         - The application connects to **Infura** (an Ethereum-compatible node) using **Web3j** to retrieve Ethereum transactions in real time.
-        - It processes the transactions and stores them in the H2 database.
+        - It processes the transactions and stores them in the Postgres database.
 - **Fulfillment**: ✅ This requirement is fully implemented.
 
 #### 2. **Start, Stop, Resume Without Losing Transactions**
@@ -95,14 +95,14 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 - **Requirement**: Efficiently handle large transaction volumes, e.g., ~1 million transactions per day, scaling up to millions of records in the database (30 million per month, 360 million per year).
     - **Current Implementation**:
         - The service uses **batch processing** for saving transactions to reduce database write load.
-        - The current database is **H2**, which is fine for development but not scalable for production. You would need to configure the service to use **PostgreSQL** or **MySQL** for long-term scalability.
+        - The current database is **Postgres**, which is fine for development but not scalable for production. You would need to configure the service to use **PostgreSQL** or **MySQL** for long-term scalability.
         - **Indexes** and potential **partitioning** on large databases will need to be configured when moving to production-grade databases to maintain performance.
-- **Fulfillment**: ✅ (for development with H2). For production, a switch to a robust database like PostgreSQL or MySQL would be needed.
+- **Fulfillment**: ✅ (for development with Postgres). For production, a switch to a robust database like PostgreSQL or MySQL would be needed.
 
 #### 4. **Store Transaction Data to Database**
 
 - **Requirement**: Store real-time transaction data in the database.
-    - **Current Implementation**: Transactions are stored in the H2 database with details such as `fromAddress`, `toAddress`, `value`, and `transactionHash`.
+    - **Current Implementation**: Transactions are stored in the Postgres database with details such as `fromAddress`, `toAddress`, `value`, and `transactionHash`.
 - **Fulfillment**: ✅ This is fully implemented.
 
 #### 5. **REST Service with Search Functionality**
@@ -157,7 +157,7 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 ### What’s Missing or Needs Enhancement:
 
 1. **Full-Text Search** (Optional): If needed, you can add this using Elasticsearch or a similar solution.
-2. **Database Scalability for Production**: Switch from H2 to a production database like PostgreSQL or MySQL to handle millions of transactions efficiently.
+2. **Database Scalability for Production**: Switch from Postgres to a production database like PostgreSQL or MySQL to handle millions of transactions efficiently.
 
 The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**. For long-term scalability, switching to a more robust database and optimizing the database structure would be recommended for production-level usage.
 
@@ -184,38 +184,19 @@ git clone https://github.com/RomanPilyushin/Hacken.git
 cd Hacken
 ````
 
-### 2. **Build the project**
+### 2. **Run the application**
 
 
 ```bash
-mvn clean install
+docker-compose up --build
 ````
 
 
-### 3. **Run the application**
+### 3. **Access the application**
 
-To start the application, run the following command from the console:
-
-
-```bash
-mvn spring-boot:run
-````
-
-
-### 4. **Access the application**
+- URL: [http://localhost:8080/](http://localhost:8080/)
 
 Once the application is running, you can access the following functionality via a web browser:
-
-#### H2 Database Console
-
-The H2 Console is available for accessing the in-memory database (H2).
-
-- URL: [http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
-- **JDBC URL**: `jdbc:h2:./data/transactions`
-- **Username**: `sa`
-- **Password**: (leave it empty by default)
-
-This console allows you to explore the contents of the database in a simple UI.
 
 #### Swagger UI
 
@@ -241,7 +222,7 @@ This is useful for monitoring key metrics such as memory usage, HTTP requests, a
 
 ### **5. Custom Configuration**
 
-**Database**: By default, the application uses an H2 in-memory database. You can configure it to use another database by updating the `application.properties` file.
+**Database**: By default, the application uses Postgres database. You can configure it to use another database by updating the `application.properties` file.
 
 **Port Configuration**: The application runs on port 8080 by default. You can change this by adding the following property in `application.properties`:
 
