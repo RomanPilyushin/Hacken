@@ -220,7 +220,7 @@ The metrics endpoint provides detailed performance metrics of the application.
 
 This is useful for monitoring key metrics such as memory usage, HTTP requests, and more.
 
-### 2. **Stop the application**
+### 4. **Stop the application**
 
 
 ```bash
@@ -231,6 +231,9 @@ docker-compose down
 
 **Database**: By default, the application uses Postgres database. You can configure it to use another database by updating the `application.properties` file.
 
+`postgres:5432`
+
 **Port Configuration**: The application runs on port 8080 by default. You can change this by adding the following property in `application.properties`:
 
 `server.port=8080`
+
