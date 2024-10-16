@@ -3,6 +3,8 @@
 
 This Spring Boot application is designed to manage and process Ethereum (ETH) transactions by interacting with the Ethereum blockchain through a Web3 provider (Infura) and storing transaction data in Postgres database. Below is an explanation of how the program works:
 
+## The Logic of Hacken Application
+
 ### 1. **Fetching Ethereum Transactions from Infura**
 
 The application connects to the Ethereum network using **Infura**, which is a Web3 provider that offers access to Ethereum nodes without running a full node locally. Through the `Web3j` library, the application makes API requests to Infura to fetch Ethereum blockchain data.
@@ -72,7 +74,7 @@ The application provides a **REST API** that allows users to query and retrieve 
 
 This setup allows users to efficiently manage and query Ethereum transaction data using a simple, scalable REST API backed by a Postgres database.
 
-### Requirements Breakdown and Current Implementation:
+## Requirements Breakdown and Current Implementation:
 
 #### 1. **Service to Connect to EVM Node and Get Real-Time Transactions**
 
@@ -162,7 +164,6 @@ The current implementation covers **all key requirements** with additional featu
 
 ## Project Structure
 
-
 ```bash
 
 Hacken/
@@ -194,8 +195,6 @@ Hacken/
 
 ````
 
-
-
 ## Requirements
 
 - Java 17 or higher
@@ -205,7 +204,7 @@ Hacken/
 - Docker
 - Docker Compose
 
-## Getting Started
+### Getting Started
 
 Follow the steps below to start the project from the console:
 
