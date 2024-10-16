@@ -160,6 +160,39 @@ This setup allows users to efficiently manage and query Ethereum transaction dat
 The current implementation covers **all key requirements** with additional features such as **API documentation**, **health checks**, and **metrics**.
 
 
+## Project Structure
+
+
+```bash
+
+Hacken/
+├── src/                   
+│   ├── main/              
+│   │   ├── java/          
+│   │   │   └── org.example.hacken/    # Main application package
+│   │   │       ├── config/            # Configuration classes
+│   │   │       │   └── Web3Config     # Web3 configuration class
+│   │   │       ├── controller/        # REST controllers
+│   │   │       │   └── TransactionController # Controller for handling transactions
+│   │   │       ├── model/             # Model classes for data representation
+│   │   │       │   ├── ProcessedBlock # Entity representing a processed block
+│   │   │       │   └── TransactionEntity # Entity representing a transaction
+│   │   │       ├── repository/        # Repository interfaces for database access
+│   │   │       │   ├── ProcessedBlockRepository # Repository for processed blocks
+│   │   │       │   └── TransactionRepository  # Repository for transactions
+│   │   │       ├── service/           # Service classes containing business logic
+│   │   │       │   ├── TransactionSyncService  # Service for syncing transactions
+│   │   │       │   └── Web3Service    # Service for Web3 operations
+│   │   │       └── HackenApplication  # Main class to bootstrap the Spring Boot application
+│   │   └── resources/                 
+│   │       └── application.properties # Application configuration properties
+│   └── test/                          # Test classes
+├── Dockerfile                         # Dockerfile for building the Hacken application container
+├── docker-compose.yml                 # Docker Compose configuration for orchestrating services
+├── pom.xml                            # Maven configuration file for building the project
+└── README.md                          # Project documentation (this file)
+
+````
 
 
 
